@@ -9,7 +9,7 @@ namespace UnitTest.BLL
     /// <summary>
     /// 日志逻辑
     /// </summary>
-    [IocInjection(serviceType: typeof(ILogBll), alias: "LogBll")]
+    //[IocInjection(serviceType: typeof(ILogBll), alias: "LogBll")]
     public class LogBll : ILogBll
     {
         /// <summary>

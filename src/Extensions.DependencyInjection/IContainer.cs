@@ -14,16 +14,18 @@ namespace Extensions.DependencyInjection
         /// </summary>
         /// <typeparam name="TService">服务</typeparam>
         /// <typeparam name="TImplementation">实现</typeparam>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
         /// <param name="param">构造参数</param>
-        void Register<TService, TImplementation>(object[] param = null) where TImplementation : TService;
+        void Register<TService, TImplementation>(LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null) where TImplementation : TService;
 
         /// <summary>
         /// 解析
         /// </summary>
         /// <typeparam name="TImplementation">实现</typeparam>
-        /// <param name="key">键</param>
+        /// <param name="alias">别名</param>
         /// <returns></returns>
-        TImplementation Resolve<TImplementation>(string key);
+        TService Resolve<TService>(string alias = null) where TService : class;
 
         /// <summary>
         /// 子容器

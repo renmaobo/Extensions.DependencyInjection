@@ -46,10 +46,48 @@ namespace UnitTest.XUnitTestProject
         public void MoreImplementationRegisterTest()
         {
             IContainer container = new IocContainer();
-            container.Register<ILogBll, LogBll>();
-            container.Register<ILogBll, HttpLogBll>();
-            container.Register<ILogBll, HttpsLogBll>();
+            container.Register<ILogBll, LogBll>(alias: "LogBll");
+            container.Register<ILogBll, HttpLogBll>(alias: "HttpLogBll");
+            container.Register<ILogBll, HttpsLogBll>(alias: "HttpsLogBll");
             System.Diagnostics.Debug.WriteLine($"container count: {container.GetContainerMembersCount()}");
+        }
+
+        /// <summary>
+        /// 单个解析测试
+        /// </summary>
+        [Fact]
+        public void SingleResolveTest()
+        {
+            IContainer container = new IocContainer();
+            container.Register<ILogBll, LogBll>();
+            ILogBll logBll = container.Resolve<ILogBll>();
+            logBll.Add("this is test log.");
+            Assert.IsType(typeof(LogBll), logBll);
+        }
+
+
+        /// <summary>
+        /// 多实现解析测试
+        /// </summary>
+        [Fact]
+        public void MoreImplementationResolveTest()
+        {
+            IContainer container = new IocContainer();
+
+            container.Register<ILogBll, LogBll>(alias: "LogBll");
+            ILogBll logBll = container.Resolve<ILogBll>("LogBll");
+            logBll.Add("this is test log.");
+            Assert.IsType(typeof(LogBll), logBll);
+
+            container.Register<ILogBll, HttpLogBll>(alias: "HttpLogBll");
+            ILogBll httpLogBll = container.Resolve<ILogBll>("HttpLogBll");
+            httpLogBll.Add("this is test http log.");
+            Assert.IsType(typeof(HttpLogBll), httpLogBll);
+
+            container.Register<ILogBll, HttpsLogBll>(alias: "HttpsLogBll");
+            ILogBll httpsLogBll = container.Resolve<ILogBll>("HttpsLogBll");
+            httpsLogBll.Add("this is test https log.");
+            Assert.IsType(typeof(HttpsLogBll), httpsLogBll);
         }
     }
 }
