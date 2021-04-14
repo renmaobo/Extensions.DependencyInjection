@@ -7,8 +7,22 @@ namespace Extensions.DependencyInjection.Attributes
     /// <summary>
     /// 容器注入特性
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class IocInjectionAttribute : Attribute
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="serviceType">服务类型</param>
+        /// <param name="lifeTime">生存周期</param>
+        /// <param name="alias">别名</param>
+        public IocInjectionAttribute(Type serviceType, LifeTime lifeTime = LifeTime.Scoped, string alias = null)
+        {
+            this.ServiceType = serviceType;
+            this.LifeTime = lifeTime;
+            this.Alias = alias;
+        }
+
         /// <summary>
         /// 生存周期
         /// </summary>
