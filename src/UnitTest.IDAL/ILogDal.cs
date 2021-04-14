@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnitTest.IBLL
+namespace UnitTest.IDAL
 {
     /// <summary>
-    /// 日志逻辑(接口)
+    /// 日志数据层(接口)
     /// </summary>
-    public interface ILogBll
+    public interface ILogDal
     {
         /// <summary>
         /// 添加日志

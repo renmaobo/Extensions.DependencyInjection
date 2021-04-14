@@ -18,5 +18,15 @@ namespace Extensions.DependencyInjection.Container
         /// 生命周期
         /// </summary>
         public LifeTime LifeTime { get; set; }
+
+        /// <summary>
+        /// 别名
+        /// </summary>
+        public string Alias { get; set; }
+
+        /// <summary>
+        /// 参数(构造注入时所需参数)
+        /// </summary>
+        public object[] Paramters { get; set; }
     }
 }

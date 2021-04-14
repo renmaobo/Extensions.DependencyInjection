@@ -14,7 +14,8 @@ namespace Extensions.DependencyInjection
         /// </summary>
         /// <typeparam name="TService">服务</typeparam>
         /// <typeparam name="TImplementation">实现</typeparam>
-        void Register<TService, TImplementation>() where TImplementation : TService;
+        /// <param name="param">构造参数</param>
+        void Register<TService, TImplementation>(object[] param = null) where TImplementation : TService;
 
         /// <summary>
         /// 解析
@@ -29,5 +30,13 @@ namespace Extensions.DependencyInjection
         /// </summary>
         /// <returns></returns>
         IContainer ChildContainer();
+
+#if DEBUG
+        /// <summary>
+        /// 获取容器成员数量
+        /// </summary>
+        /// <returns></returns>
+        int GetContainerMembersCount();
+#endif
     }
 }

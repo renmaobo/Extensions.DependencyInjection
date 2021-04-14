@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2;netstandard2.1;</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTest.IDAL\UnitTest.IDAL.csproj" />
+  </ItemGroup>
+
+</Project>

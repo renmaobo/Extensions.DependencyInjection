@@ -4,4 +4,9 @@
     <TargetFrameworks>netstandard2;netstandard2.1;</TargetFrameworks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions.DependencyInjection\Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\UnitTest.IBLL\UnitTest.IBLL.csproj" />
+  </ItemGroup>
+
 </Project>
