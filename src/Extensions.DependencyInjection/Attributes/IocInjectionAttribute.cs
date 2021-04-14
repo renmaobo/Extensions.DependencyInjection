@@ -7,7 +7,7 @@ namespace Extensions.DependencyInjection.Attributes
     /// <summary>
     /// Ioc注入特性
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
     public class IocInjectionAttribute : Attribute
     {
         /// <summary>
