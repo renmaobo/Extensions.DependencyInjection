@@ -19,7 +19,7 @@ namespace UnitTest.XUnitTestProject
         [Fact]
         public void SingleRegisterTest()
         {
-            IBuilder container = new IocContainerBuilder();
+            IContainer container = new IocContainer();
             container.Register<ILogBll, LogBll>();
             System.Diagnostics.Debug.WriteLine($"container count: {container.GetContainerMembersCount()}");
         }
@@ -30,7 +30,7 @@ namespace UnitTest.XUnitTestProject
         [Fact]
         public void RepeatRegisterTest()
         {
-            IBuilder container = new IocContainerBuilder();
+            IContainer container = new IocContainer();
             container.Register<ILogBll, LogBll>();
             Assert.Throws<RepeatRegisterException>(() =>
             {
@@ -45,7 +45,7 @@ namespace UnitTest.XUnitTestProject
         [Fact]
         public void MoreImplementationRegisterTest()
         {
-            IBuilder container = new IocContainerBuilder();
+            IContainer container = new IocContainer();
             container.Register<ILogBll, LogBll>(alias: "LogBll");
             container.Register<ILogBll, HttpLogBll>(alias: "HttpLogBll");
             container.Register<ILogBll, HttpsLogBll>(alias: "HttpsLogBll");
@@ -58,7 +58,7 @@ namespace UnitTest.XUnitTestProject
         [Fact]
         public void SingleResolveTest()
         {
-            IBuilder container = new IocContainerBuilder();
+            IContainer container = new IocContainer();
             container.Register<ILogBll, LogBll>();
             ILogBll logBll = container.Resolve<ILogBll>();
             logBll.Add("this is test log.");
@@ -72,7 +72,7 @@ namespace UnitTest.XUnitTestProject
         [Fact]
         public void MoreImplementationResolveTest()
         {
-            IBuilder container = new IocContainerBuilder();
+            IContainer container = new IocContainer();
 
             container.Register<ILogBll, LogBll>(alias: "LogBll");
             ILogBll logBll = container.Resolve<ILogBll>("LogBll");
