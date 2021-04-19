@@ -44,7 +44,7 @@ namespace Extensions.DependencyInjection.Container
         /// <param name="lifeTime">生命周期。默认为瞬时</param>
         /// <param name="alias">别名</param>
         /// <param name="param">构造参数</param>
-        internal void Register(Type serviceType, Type implementationType, LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null)
+        public void Register(Type serviceType, Type implementationType, LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null)
         {
             string key = this.GetKey(serviceType, alias);
             if (this.Container.ContainsKey(key))

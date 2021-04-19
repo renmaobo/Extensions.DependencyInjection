@@ -41,9 +41,24 @@ namespace Extensions.DependencyInjection
         /// <param name="services">微软提供的服务</param>
         public void Transfer(IServiceCollection services)
         {
-
-
-            throw new NotImplementedException();
+            foreach (ServiceDescriptor service in services)// 转移注入微软提供的服务
+            {
+                // 注入转化
+                switch (service.Lifetime)
+                {
+                    case ServiceLifetime.Singleton:
+                        this.AddSingleton(service.ServiceType, service.ImplementationType);
+                        break;
+                    case ServiceLifetime.Scoped:
+                        this.AddScoped(service.ServiceType, service.ImplementationType);
+                        break;
+                    case ServiceLifetime.Transient:
+                        this.AddTransient(service.ServiceType, service.ImplementationType);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
