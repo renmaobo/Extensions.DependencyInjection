@@ -1,3 +1,4 @@
+using Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UnitTest.BLL;
+using UnitTest.DAL;
+using UnitTest.IBLL;
+using UnitTest.IDAL;
 
 namespace UnitTest.TestWebApplication
 {
@@ -26,6 +31,15 @@ namespace UnitTest.TestWebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+        }
+
+        public void ConfigureContainer(IBuilder<IContainer> builder)
+        {
+            //builder.Register<ILogBll, LogBll>();
+            //builder.Register<ILogBll, HttpLogBll>();
+            //builder.Register<ILogBll, HttpsLogBll>();
+
+            //builder.Register<ILogDal, LogDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,5 +61,10 @@ namespace UnitTest.TestWebApplication
                 endpoints.MapControllers();
             });
         }
+    }
+
+    public class ContainerBuilder
+    {
+
     }
 }

@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.SourceCode", "0.SourceCod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.IBLL", "UnitTest.IBLL\UnitTest.IBLL.csproj", "{BF2B9660-B43E-4E1D-90A2-A4E459572E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.BLL", "UnitTest.BLL\UnitTest.BLL.csproj", "{2F53D380-906C-4E06-992B-80DF08C75617}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.BLL", "UnitTest.BLL\UnitTest.BLL.csproj", "{2F53D380-906C-4E06-992B-80DF08C75617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.TestWebApplication", "UnitTest.TestWebApplication\UnitTest.TestWebApplication.csproj", "{C5CEBB54-D5E9-400B-B8B0-C1AA74E1A22A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.TestWebApplication", "UnitTest.TestWebApplication\UnitTest.TestWebApplication.csproj", "{C5CEBB54-D5E9-400B-B8B0-C1AA74E1A22A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.XUnitTestProject", "UnitTest.XUnitTestProject\UnitTest.XUnitTestProject.csproj", "{78CBB1A1-A9D5-4083-942A-5538F5CDA9DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.XUnitTestProject", "UnitTest.XUnitTestProject\UnitTest.XUnitTestProject.csproj", "{78CBB1A1-A9D5-4083-942A-5538F5CDA9DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{43C6AD60-641A-4072-B590-6E58FD173DB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{1EC0049B-049F-497B-A8F3-4C57BA344558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.DAL", "UnitTest.DAL\UnitTest.DAL.csproj", "{6EDAC841-DD14-4AAF-A875-66047457997D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.DAL", "UnitTest.DAL\UnitTest.DAL.csproj", "{6EDAC841-DD14-4AAF-A875-66047457997D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.IDAL", "UnitTest.IDAL\UnitTest.IDAL.csproj", "{399AA026-77B7-4C6C-ADE8-DF0CBA440E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.IDAL", "UnitTest.IDAL\UnitTest.IDAL.csproj", "{399AA026-77B7-4C6C-ADE8-DF0CBA440E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

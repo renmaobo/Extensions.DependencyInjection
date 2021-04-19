@@ -1,0 +1,356 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Extensions.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:Extensions.DependencyInjection.Attributes.ConstantParameterAttribute">
+            <summary>
+            常量参数特性
+            </summary>
+            <remarks>用于构造函数常量注册</remarks>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Attributes.IocContractAttribute">
+            <summary>
+            容器契约特性
+            </summary>
+            <remarks>用于自动扫描注册容器</remarks>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Attributes.IocContractAttribute.#ctor(System.Type,Extensions.DependencyInjection.LifeTime,System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="serviceType">服务类型</param>
+            <param name="lifeTime">生存周期</param>
+            <param name="alias">别名</param>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Attributes.IocContractAttribute.LifeTime">
+            <summary>
+            生存周期
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Attributes.IocContractAttribute.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Attributes.IocContractAttribute.ServiceType">
+            <summary>
+            服务类型
+            </summary>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Attributes.IocInjectionAttribute">
+            <summary>
+            Ioc注入特性
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Attributes.IocInjectionAttribute.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Container.ImplementationModel">
+            <summary>
+            实现实体
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.ImplementationModel.ImplementationType">
+            <summary>
+            实现类型
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.ImplementationModel.LifeTime">
+            <summary>
+            生命周期
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.ImplementationModel.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.ImplementationModel.Paramters">
+            <summary>
+            参数(构造注入时所需参数)
+            </summary>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Container.IocContainer">
+            <summary>
+            Ioc容器构建器
+            </summary>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.IocContainer.Container">
+            <summary>
+            容器
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.Register``2(Extensions.DependencyInjection.LifeTime,System.String,System.Object[])">
+            <summary>
+            注册
+            </summary>
+            <typeparam name="TService">服务</typeparam>
+            <typeparam name="TImplementation">实现</typeparam>
+            <param name="lifeTime">生命周期。默认为瞬时</param>
+            <param name="alias">别名</param>
+            <param name="param">构造参数</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.Register(System.Type,System.Type,Extensions.DependencyInjection.LifeTime,System.String,System.Object[])">
+            <summary>
+            注册
+            </summary>
+            <param name="serviceType">服务类型</param>
+            <param name="implementationType">实现类型</param>
+            <param name="lifeTime">生命周期。默认为瞬时</param>
+            <param name="alias">别名</param>
+            <param name="param">构造参数</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.Resolve``1(System.String)">
+            <summary>
+            解析
+            </summary>
+            <typeparam name="TImplementation">服务</typeparam>
+            <param name="alias">别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.Resolve(System.Type,System.String)">
+            <summary>
+            解析
+            </summary>
+            <param name="serviceType">服务类型</param>
+            <param name="alias">别名</param>
+            <returns></returns>
+        </member>
+        <member name="P:Extensions.DependencyInjection.Container.IocContainer.IocInjectionAttributeType">
+            <summary>
+            Ioc实现特性类型
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.GetAlias(System.Reflection.ICustomAttributeProvider)">
+            <summary>
+            获取别名
+            </summary>
+            <param name="provider">自定义特性提供者</param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.ConstructorInjection(System.Object@,Extensions.DependencyInjection.Container.ImplementationModel)">
+            <summary>
+            构造函数注入
+            </summary>
+            <param name="instance">实例</param>
+            <param name="implementationModel">实现信息</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.PropertyInjection(System.Object@,Extensions.DependencyInjection.Container.ImplementationModel)">
+            <summary>
+            属性注入
+            </summary>
+            <param name="instance">实例</param>
+            <param name="implementationModel">实现信息</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.MethodInjection(System.Object@,Extensions.DependencyInjection.Container.ImplementationModel)">
+            <summary>
+            方法注入
+            </summary>
+            <param name="instance">实例</param>
+            <param name="implementationModel">实现信息</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.GetKey(System.Type,System.String)">
+            <summary>
+            获取键
+            </summary>
+            <param name="type">服务类型</param>
+            <param name="alias">别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainer.GetContainerMembersCount">
+            <summary>
+            获取容器成员数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Container.IocContainerExtensons">
+            <summary>
+            Ioc容器扩展
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddTransient``2(Extensions.DependencyInjection.Container.IocContainer,System.String,System.Object[])">
+            <summary>
+            注册为瞬时
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TImplementation"></typeparam>
+            <param name="container"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddTransient(Extensions.DependencyInjection.Container.IocContainer,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            注册为瞬时
+            </summary>
+            <param name="container"></param>
+            <param name="serviceType"></param>
+            <param name="implementationType"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddScoped``2(Extensions.DependencyInjection.Container.IocContainer,System.String,System.Object[])">
+            <summary>
+            注册为作用域单例
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TImplementation"></typeparam>
+            <param name="container"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddScoped(Extensions.DependencyInjection.Container.IocContainer,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            注册为作用域单例
+            </summary>
+            <param name="container"></param>
+            <param name="serviceType"></param>
+            <param name="implementationType"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddSingleton``2(Extensions.DependencyInjection.Container.IocContainer,System.String,System.Object[])">
+            <summary>
+            注册为单例
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TImplementation"></typeparam>
+            <param name="container"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Container.IocContainerExtensons.AddSingleton(Extensions.DependencyInjection.Container.IocContainer,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            注册为单例
+            </summary>
+            <param name="container"></param>
+            <param name="serviceType"></param>
+            <param name="implementationType"></param>
+            <param name="alias"></param>
+            <param name="param"></param>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Exceptions.NotIocInjectionAttributeException">
+            <summary>
+            没有Ioc注册特性
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.Exceptions.NotIocInjectionAttributeException.#ctor(System.String)">
+            <summary>
+            实例化
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Extensions.DependencyInjection.Exceptions.RepeatRegisterException">
+            <summary>
+            重复注册异常
+            </summary>
+        </member>
+        <member name="T:Extensions.DependencyInjection.IBuilder`1">
+            <summary>
+            构建器(接口)
+            </summary>
+            <typeparam name="TBuildObject">构建对象</typeparam>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IBuilder`1.Build">
+            <summary>
+            构建容器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Extensions.DependencyInjection.IContainer">
+            <summary>
+            容器(接口)
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IContainer.Register``2(Extensions.DependencyInjection.LifeTime,System.String,System.Object[])">
+            <summary>
+            注册
+            </summary>
+            <typeparam name="TService">服务</typeparam>
+            <typeparam name="TImplementation">实现</typeparam>
+            <param name="lifeTime">生命周期。默认为瞬时</param>
+            <param name="alias">别名</param>
+            <param name="param">构造参数</param>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IContainer.Resolve``1(System.String)">
+            <summary>
+            解析
+            </summary>
+            <typeparam name="TImplementation">实现</typeparam>
+            <param name="alias">别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IContainer.ChildContainer">
+            <summary>
+            子容器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IContainer.GetContainerMembersCount">
+            <summary>
+            获取容器成员数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Extensions.DependencyInjection.IocContainerBuilder">
+            <summary>
+            Ioc容器构建器
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IocContainerBuilder.Build">
+            <summary>
+            构建容器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IocServiceProvider.GetService(System.Type)">
+            <summary>
+            获取服务
+            </summary>
+            <param name="serviceType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Extensions.DependencyInjection.IocServiceProviderFactory">
+            <summary>
+            Ioc服务供应工厂
+            </summary>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IocServiceProviderFactory.CreateBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            创建构建器
+            </summary>
+            <param name="services">服务集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.DependencyInjection.IocServiceProviderFactory.CreateServiceProvider(Extensions.DependencyInjection.IBuilder{Extensions.DependencyInjection.IContainer})">
+            <summary>
+            创建服务供应器
+            </summary>
+            <param name="containerBuilder">容器构建器</param>
+            <returns></returns>
+        </member>
+        <member name="T:Extensions.DependencyInjection.LifeTime">
+            <summary>
+            生命周期
+            </summary>
+        </member>
+        <member name="F:Extensions.DependencyInjection.LifeTime.Transient">
+            <summary>
+            瞬时
+            </summary>
+        </member>
+        <member name="F:Extensions.DependencyInjection.LifeTime.Scoped">
+            <summary>
+            作用域单例
+            </summary>
+        </member>
+        <member name="F:Extensions.DependencyInjection.LifeTime.Singleton">
+            <summary>
+            单例
+            </summary>
+        </member>
+    </members>
+</doc>

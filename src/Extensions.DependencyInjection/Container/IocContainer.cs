@@ -9,7 +9,7 @@ using System.Text;
 namespace Extensions.DependencyInjection.Container
 {
     /// <summary>
-    /// Ioc容器
+    /// Ioc容器构建器
     /// </summary>
     public class IocContainer : IContainer
     {

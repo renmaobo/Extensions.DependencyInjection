@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions.DependencyInjection\Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\UnitTest.BLL\UnitTest.BLL.csproj" />
+    <ProjectReference Include="..\UnitTest.DAL\UnitTest.DAL.csproj" />
+  </ItemGroup>
+
 
 </Project>
