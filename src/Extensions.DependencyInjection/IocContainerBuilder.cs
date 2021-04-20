@@ -43,26 +43,54 @@ namespace Extensions.DependencyInjection
         {
             foreach (ServiceDescriptor service in services)// 转移注入微软提供的服务
             {
-                if (service.ImplementationType == null)
-                {
+                this.TransferProviderDictionary(service)[service.ImplementationType is null]();
+            }
 
-                }
-                // 注入转化
-                switch (service.Lifetime)
+        }
+
+        /// <summary>
+        /// 转移提供者字典
+        /// </summary>
+        /// <param name="serviceDescriptor">服务描述符号</param>
+        /// <returns></returns>
+        private Dictionary<bool, Action> TransferProviderDictionary(ServiceDescriptor serviceDescriptor)
+        {
+            Dictionary<bool, Action> execute = new Dictionary<bool, Action>();
+            execute.Add(true, () =>
+            {
+                switch (serviceDescriptor.Lifetime)
                 {
                     case ServiceLifetime.Singleton:
-                        this.AddSingleton(service.ServiceType, service.ImplementationType);
+                        this.AddSingleton(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationType);
                         break;
                     case ServiceLifetime.Scoped:
-                        this.AddScoped(service.ServiceType, service.ImplementationType);
+                        this.AddScoped(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationType);
                         break;
                     case ServiceLifetime.Transient:
-                        this.AddTransient(service.ServiceType, service.ImplementationType);
+                        this.AddTransient(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationType);
                         break;
                     default:
                         break;
                 }
-            }
+            });
+            execute.Add(false, () =>
+            {
+                switch (serviceDescriptor.Lifetime)
+                {
+                    case ServiceLifetime.Singleton:
+                        this.AddSingleton(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationInstance);
+                        break;
+                    case ServiceLifetime.Scoped:
+                        this.AddScoped(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationInstance);
+                        break;
+                    case ServiceLifetime.Transient:
+                        this.AddTransient(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationInstance);
+                        break;
+                    default:
+                        break;
+                }
+            });
+            return execute;
         }
     }
 }

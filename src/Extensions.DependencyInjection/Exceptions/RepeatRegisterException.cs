@@ -9,6 +9,10 @@ namespace Extensions.DependencyInjection.Exceptions
     /// </summary>
     public class RepeatRegisterException : Exception
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="message"></param>
         public RepeatRegisterException(string message) : base(message) { }
     }
 }
