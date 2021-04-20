@@ -15,6 +15,11 @@ namespace Extensions.DependencyInjection.Container
         public Type ImplementationType { get; set; }
 
         /// <summary>
+        /// 实现实例(仅单例使用)
+        /// </summary>
+        public object ImplementationInstance { get; set; }
+
+        /// <summary>
         /// 生命周期
         /// </summary>
         public LifeTime LifeTime { get; set; }

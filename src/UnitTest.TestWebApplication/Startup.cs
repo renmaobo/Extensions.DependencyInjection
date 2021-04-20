@@ -33,13 +33,17 @@ namespace UnitTest.TestWebApplication
             services.AddControllers();
         }
 
+        /// <summary>
+        /// ÅäÖÃÈÝÆ÷
+        /// </summary>
+        /// <param name="builder">ÈÝÆ÷¹¹½¨Æ÷</param>
         public void ConfigureContainer(IBuilder<IContainer> builder)
         {
-            //builder.Register<ILogBll, LogBll>();
-            //builder.Register<ILogBll, HttpLogBll>();
-            //builder.Register<ILogBll, HttpsLogBll>();
+            builder.AddScoped<ILogBll, LogBll>();
+            builder.AddScoped<ILogBll, HttpLogBll>();
+            builder.AddScoped<ILogBll, HttpsLogBll>();
 
-            //builder.Register<ILogDal, LogDal>();
+            builder.AddScoped<ILogDal, LogDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,10 +65,5 @@ namespace UnitTest.TestWebApplication
                 endpoints.MapControllers();
             });
         }
-    }
-
-    public class ContainerBuilder
-    {
-
     }
 }

@@ -43,6 +43,10 @@ namespace Extensions.DependencyInjection
         {
             foreach (ServiceDescriptor service in services)// 转移注入微软提供的服务
             {
+                if (service.ImplementationType == null)
+                {
+
+                }
                 // 注入转化
                 switch (service.Lifetime)
                 {

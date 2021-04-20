@@ -34,6 +34,19 @@ namespace Extensions.DependencyInjection.Container
         /// <typeparam name="TImplementation">实现</typeparam>
         /// <param name="lifeTime">生命周期。默认为瞬时</param>
         /// <param name="alias">别名</param>
+        /// <param name="implementationInstance">实现实例</param>
+        public void Register<TService, TImplementation>(LifeTime lifeTime, string alias = null, object implementationInstance = null) where TImplementation : TService
+        {
+            this.Register(typeof(TService), typeof(TImplementation), lifeTime, alias, implementationInstance);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <typeparam name="TService">服务</typeparam>
+        /// <typeparam name="TImplementation">实现</typeparam>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
         /// <param name="param">构造参数</param>
         public void Register<TService, TImplementation>(LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null) where TImplementation : TService
         {
@@ -47,19 +60,96 @@ namespace Extensions.DependencyInjection.Container
         /// <param name="implementationType">实现类型</param>
         /// <param name="lifeTime">生命周期。默认为瞬时</param>
         /// <param name="alias">别名</param>
+        /// <param name="implementationInstance">实现实例</param>
+        public void Register(Type serviceType, Type implementationType, LifeTime lifeTime, string alias = null, object implementationInstance = null)
+        {
+            this.Register(serviceType, implementationType, lifeTime, alias, implementationInstance, null);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="serviceType">服务类型</param>
+        /// <param name="implementationType">实现类型</param>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
         /// <param name="param">构造参数</param>
         public void Register(Type serviceType, Type implementationType, LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null)
         {
+            this.Register(serviceType, implementationType, lifeTime, alias, null, param);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <typeparam name="TService">服务</typeparam>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
+        /// <param name="implementationInstance">实现实例</param>
+        public void Register<TService>(LifeTime lifeTime, string alias = null, object implementationInstance = null) where TService : class
+        {
+            this.Register(typeof(TService), lifeTime, alias, implementationInstance);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <typeparam name="TService">服务</typeparam>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
+        /// <param name="param">构造参数</param>
+        public void Register<TService>(LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null) where TService : class
+        {
+            this.Register(typeof(TService), lifeTime, alias, param);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="serviceType">服务类型</param>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
+        /// <param name="implementationInstance">实现实例</param>
+        public void Register(Type serviceType, LifeTime lifeTime, string alias = null, object implementationInstance = null)
+        {
+            this.Register(serviceType, null, lifeTime, alias, implementationInstance, null);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="serviceType">服务类型</param>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
+        /// <param name="param">构造参数</param>
+        public void Register(Type serviceType, LifeTime lifeTime = LifeTime.Transient, string alias = null, object[] param = null)
+        {
+            this.Register(serviceType, null, lifeTime, alias, null, param);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="serviceType">服务类型</param>
+        /// <param name="implementationType">实现类型</param>
+        /// <param name="lifeTime">生命周期。默认为瞬时</param>
+        /// <param name="alias">别名</param>
+        /// <param name="implementationInstance">实现实例</param>
+        /// <param name="param">构造参数</param>
+        private void Register(Type serviceType, Type implementationType, LifeTime lifeTime = LifeTime.Transient, string alias = null, object implementationInstance = null, object[] param = null)
+        {
+
             string key = this.GetKey(serviceType, alias);
             if (this.Container.ContainsKey(key))
-                throw new RepeatRegisterException($"regeister {implementationType.FullName} fail. becase exist repeat key[{key}], please check your code.");
+                throw new RepeatRegisterException($"regeister {(implementationType is null ? serviceType.FullName : implementationType.FullName)} fail. becase exist repeat key[{key}], please check your code.");
 
             this.Container.Add(key, new ImplementationModel()
             {
-                ImplementationType = implementationType,
                 LifeTime = lifeTime,
                 Alias = alias,
-                Paramters = param
+                Paramters = param,
+                ImplementationType = implementationType,
+                ImplementationInstance = implementationInstance,
             });
         }
 
