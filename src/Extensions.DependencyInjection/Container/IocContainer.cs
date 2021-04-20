@@ -18,6 +18,10 @@ namespace Extensions.DependencyInjection.Container
         /// </summary>
         protected Dictionary<string, ImplementationModel> Container { get; private set; } = new Dictionary<string, ImplementationModel>();
 
+        /// <summary>
+        /// 子容器
+        /// </summary>
+        /// <returns></returns>
         public IContainer ChildContainer()
         {
             throw new NotImplementedException();
@@ -62,7 +66,7 @@ namespace Extensions.DependencyInjection.Container
         /// <summary>
         /// 解析
         /// </summary>
-        /// <typeparam name="TImplementation">服务</typeparam>
+        /// <typeparam name="TService">服务</typeparam>
         /// <param name="alias">别名</param>
         /// <returns></returns>
         public TService Resolve<TService>(string alias = null) where TService : class
@@ -191,7 +195,7 @@ namespace Extensions.DependencyInjection.Container
         /// <summary>
         /// 获取键
         /// </summary>
-        /// <param name="type">服务类型</param>
+        /// <param name="serviceType">服务类型</param>
         /// <param name="alias">别名</param>
         /// <returns></returns>
         protected string GetKey(Type serviceType, string alias)
